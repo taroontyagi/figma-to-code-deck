@@ -17,8 +17,14 @@
   .by span { color: #999; }
   .rule { height: 1px; background: #2a2a2a; }
   .choices { display: flex; flex-direction: column; gap: 12px; }
+  .choices-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .choices-row .choice { flex-direction: column; align-items: flex-start; gap: 10px; padding: 18px 18px; }
+  .choices-row .choice .icon { font-size: 20px; }
   .choice { display: flex; align-items: center; gap: 18px; padding: 20px 22px; border: 1px solid #333; border-radius: 8px; text-decoration: none; color: inherit; transition: border-color 0.2s, background 0.2s; }
   .choice:hover { border-color: #444; background: #161616; }
+  .choice-primary { border-color: #444; }
+  .choice-primary:hover { border-color: #666; }
+  .section-label { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: #555; margin-bottom: -4px; }
   .icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
   .choice-body { flex: 1; min-width: 0; }
   .choice-title { font-size: 13px; font-weight: 600; color: #e0e0e0; margin-bottom: 3px; }
@@ -38,33 +44,34 @@
     <div class="by">by <span>Taroon Tyagi</span> · March 2026</div>
   </div>
   <div class="rule"></div>
-  <div class="choices">
+  <a class="choice choice-primary" href="./quickref.html">
+    <span class="icon">📋</span>
+    <div class="choice-body">
+      <div class="choice-title">Quick Reference</div>
+      <div class="choice-desc">Setup, the loop, prompting, web gap, skills, ways of working — everything on one page.</div>
+    </div>
+    <span class="arrow">→</span>
+  </a>
+
+  <div>
+  <div class="section-label">Deep dive</div>
+  <div class="choices-row" style="margin-top:10px">
     <a class="choice" href="./designer.html">
       <span class="icon">🎨</span>
       <div class="choice-body">
         <div class="choice-title">Designer Edition</div>
-        <div class="choice-desc">Design tokens, Figma prep, Auto Layout, component systems, visual thinking.</div>
+        <div class="choice-desc">Tokens, Figma prep, visual thinking, prompting, component systems. 24 slides.</div>
       </div>
-      <span class="arrow">→</span>
     </a>
     <a class="choice" href="./developer.html">
       <span class="icon">⌨️</span>
       <div class="choice-body">
         <div class="choice-title">Developer Edition</div>
-        <div class="choice-desc">Install, MCP config, Claude Code, skills, copy-paste terminal commands.</div>
+        <div class="choice-desc">Install, MCP config, CLAUDE.md, skills, copy-paste commands. 18 slides.</div>
       </div>
-      <span class="arrow">→</span>
     </a>
   </div>
-  <div class="rule"></div>
-  <a class="choice" href="./quickref.html" style="opacity:0.6;">
-    <span class="icon">📋</span>
-    <div class="choice-body">
-      <div class="choice-title">Quick Reference</div>
-      <div class="choice-desc">Tools, the loop, MCP setup, skills — one page.</div>
-    </div>
-    <span class="arrow">→</span>
-  </a>
+  </div>
   <div class="rule"></div>
   <div class="footer">
     <a href="https://claude.ai/code" target="_blank">Claude Code</a> ·

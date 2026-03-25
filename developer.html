@@ -274,6 +274,7 @@ body.focus-mode .focus-hint{opacity:1;}
 .code-body{
   padding:14px 16px;overflow-x:auto;
   font-size:12px;line-height:1.7;font-family:var(--mono);color:#e6edf3;
+  white-space:pre;
 }
 .code-body .c{color:#8b949e;}
 .code-body .k{color:#ff7b72;}
@@ -434,83 +435,7 @@ body.focus-mode .focus-hint{opacity:1;}
 <!-- MAIN CONTENT -->
 <div class="main">
   <div class="zoom-wrapper" id="zoom-wrapper"><div class="slides-track" id="slides-track">
-
-    <!-- Ways of Working -->
-    <div class="slide">
-      <div class="readme">
-        <h1>team/ways-of-working.md</h1>
-        <p>The tooling changed. The team structure question didn't get easier — it got more explicit. Here are the three models teams are actually running.</p>
-
-        <div class="alert alert-note">
-          <span class="alert-icon">ℹ️</span>
-          <span>There's no universally correct model. The right one depends on your team's trust level, code ownership culture, and where the bottleneck actually lives.</span>
-        </div>
-
-        <h2>Model A — Designer vibes, dev integrates</h2>
-        <div class="code-block">
-          <div class="code-header"><span class="code-lang">ownership split</span></div>
-          <div class="code-body">Designer  →  Claude Code  →  UI components in repo
-Developer →  API, state, auth, business logic, integration
-
-<span class="c"># Designer ships components directly to the codebase.</span>
-<span class="c"># Dev wires them to data and handles everything non-visual.</span></div>
-        </div>
-        <table class="gh-table">
-          <thead><tr><th>Works when</th><th>Breaks when</th></tr></thead>
-          <tbody>
-            <tr><td>Designer is comfortable reading and committing Claude Code output</td><td>Components don't follow codebase conventions — no one catches drift</td></tr>
-            <tr><td>Clear contract: where UI ends, business logic begins</td><td>"Claude wrote it" is used to dodge review comments</td></tr>
-            <tr><td>Design system is tokenised — tokens in code, not just Figma</td><td>Designer ships components with hardcoded values, dev has to fix</td></tr>
-          </tbody>
-        </table>
-
-        <h2>Model B — Designer designs, dev vibes</h2>
-        <div class="code-block">
-          <div class="code-header"><span class="code-lang">ownership split</span></div>
-          <div class="code-body">Designer  →  Figma (structured: named layers, tokens, variants)
-Developer →  Claude Code reads Figma via MCP  →  full implementation
-
-<span class="c"># Dev implements from spec. Designer reviews output.</span>
-<span class="c"># Traditional roles, Claude accelerates the dev side.</span></div>
-        </div>
-        <table class="gh-table">
-          <thead><tr><th>Works when</th><th>Breaks when</th></tr></thead>
-          <tbody>
-            <tr><td>Figma file is well-structured — named layers, Auto Layout, Variables</td><td>Figma files are messy — Claude approximates, drift goes unnoticed</td></tr>
-            <tr><td>Designer and dev have a shared, fast review ritual</td><td>Review is async and slow — drift compounds across components</td></tr>
-            <tr><td>Dev bottleneck is the team's constraint</td><td>Design system changes outpace dev's ability to review output quality</td></tr>
-          </tbody>
-        </table>
-
-        <h2>Model C — Fluid, with explicit ownership</h2>
-        <div class="code-block">
-          <div class="code-header"><span class="code-lang">ownership split</span></div>
-          <div class="code-body">Both designer and developer use Claude.
-The question is not who writes — it is who owns the PR.
-
-<span class="c"># Whoever merges it is responsible for spec fidelity.</span>
-<span class="c"># Works at high trust. Collapses without code ownership culture.</span></div>
-        </div>
-
-        <h2>The questions that actually matter</h2>
-        <table class="gh-table">
-          <thead><tr><th>Question</th><th>Why it matters</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Who reviews Claude's output?</strong></td><td>Someone with both design and code context must own the final check. Claude is not the last line of defence.</td></tr>
-            <tr><td><strong>Where does the design system live?</strong></td><td>If it's only in Figma, Model A is risky. If tokens exist in code too, Model A becomes viable.</td></tr>
-            <tr><td><strong>What's the actual bottleneck?</strong></td><td>If dev is the bottleneck → Models A or B. If design review is the bottleneck → faster review cycles first.</td></tr>
-            <tr><td><strong>Are you drifting into a model?</strong></td><td>Have the conversation explicitly. Decide. Revisit in 6 weeks.</td></tr>
-          </tbody>
-        </table>
-
-        <div class="alert alert-warn">
-          <span class="alert-icon">⚠️</span>
-          <span><strong>The failure mode all three models share:</strong> no one owns the design-code parity check. Build that ritual first — before deciding who uses which tool.</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 1: README / Hero -->
+    <!-- README -->
     <div class="slide">
       <div class="readme">
         <h1>
@@ -553,6 +478,7 @@ The question is not who writes — it is who owns the PR.
     </div>
 
     <!-- SLIDE 2: Install -->
+    <!-- Setup — Install -->
     <div class="slide">
       <div class="readme">
         <h1>setup/install.sh</h1>
@@ -616,6 +542,7 @@ export ANTHROPIC_API_KEY=sk-ant-...</div>
     </div>
 
     <!-- SLIDE 3: MCP Config -->
+    <!-- Setup — MCP Config -->
     <div class="slide">
       <div class="readme">
         <h1>setup/mcp-config.md</h1>
@@ -683,6 +610,7 @@ claude mcp add --transport sse figma-local http://127.0.0.1:3845/sse</div>
     </div>
 
     <!-- SLIDE 4: Figma Prep -->
+    <!-- Setup — Figma Prep -->
     <div class="slide">
       <div class="readme">
         <h1>setup/figma-prep.md</h1>
@@ -749,7 +677,82 @@ Nav/TopBar/Authenticated</div>
       </div>
     </div>
 
+        <!-- CLAUDE.md -->
+    <!-- Setup — CLAUDE.md -->
+    <div class="slide">
+      <div class="readme">
+        <h1>setup/claude-md.md <span class="pill pill-green" style="font-size:10px;margin-left:8px">Do this first</span></h1>
+        <p>A <code>CLAUDE.md</code> file in your project root is Claude Code's persistent memory for that project. It loads automatically at the start of every session — no prompting required.</p>
+
+        <div class="alert alert-tip">
+          <span class="alert-icon">⚡</span>
+          <span><strong>Do this before your first prompt.</strong> 10 minutes of CLAUDE.md setup saves hours of repeated context across every future session. Commit it — the whole team benefits immediately.</span>
+        </div>
+
+        <h2>What to put in it</h2>
+        <table class="gh-table">
+          <thead><tr><th>Section</th><th>What to include</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Stack</strong></td><td>Framework, CSS approach, TypeScript config, test runner</td><td>Claude matches your setup instead of guessing</td></tr>
+            <tr><td><strong>Design system</strong></td><td>Token file path, Figma source URL, component pattern to follow</td><td>Every component prompt inherits this context automatically</td></tr>
+            <tr><td><strong>Conventions</strong></td><td>Naming, file structure, ARIA requirements, Storybook expectations</td><td>Claude respects the standards you've already established</td></tr>
+            <tr><td><strong>Do Not Touch</strong></td><td>Legacy folders, deprecated files, third-party code to leave alone</td><td>Prevents Claude from modifying things it shouldn't</td></tr>
+            <tr><td><strong>Project context</strong></td><td>What the product is, who uses it, performance constraints</td><td>Better decisions in ambiguous situations</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Starter template</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">CLAUDE.md</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+          <div class="code-body"><span class="c"># CLAUDE.md — [Project Name]</span>
+
+<span class="v">## Stack</span>
+Next.js 15 · Tailwind CSS · TypeScript strict · Storybook 8
+
+<span class="v">## Design System</span>
+- Tokens: <span class="s">/tokens/index.ts</span> — always reference, never hardcode hex values
+- Figma source: <span class="s">figma.com/design/[FILE_KEY]</span>
+- Component pattern: follow <span class="s">/components/Button.tsx</span> for structure and naming
+- All new components need ARIA labels + keyboard navigation + Storybook story
+
+<span class="v">## Conventions</span>
+- kebab-case filenames, PascalCase component names
+- No inline styles. No hardcoded colours or spacing values.
+- CSS custom properties only — reference tokens, never raw values
+- One component per conversation for best output quality
+
+<span class="v">## Do Not Touch</span>
+- <span class="fn">/legacy</span> — deprecated, scheduled for removal Q3
+- <span class="fn">/tokens/legacy.css</span> — do not import or extend
+- <span class="fn">/vendor</span> — third-party, do not modify
+
+<span class="v">## Project context</span>
+E-commerce platform. Primary users are returning customers on mobile.
+Performance budget: LCP &lt; 2.5s. Accessibility: WCAG AA minimum.</div>
+        </div>
+
+        <h2>Scoping</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span></div>
+          <div class="code-body"><span class="c"># Project-level — committed to repo, shared with team</span>
+./CLAUDE.md
+
+<span class="c"># Personal overrides — gitignored, your own preferences</span>
+.claude/CLAUDE.md
+
+<span class="c"># Verify Claude is reading it</span>
+<span class="c"># Ask Claude: "What does our CLAUDE.md say about tokens?"</span></div>
+        </div>
+
+        <div class="alert alert-note">
+          <span class="alert-icon">ℹ️</span>
+          <span><strong>Living document.</strong> Update CLAUDE.md as the project evolves. Add new conventions as they emerge. Remove outdated rules. The team that keeps it current gets the best results.</span>
+        </div>
+      </div>
+    </div>
+
     <!-- SLIDE 5: Workflow -->
+    <!-- Workflow — Loop -->
     <div class="slide">
       <div class="readme">
         <h1>workflow/loop.md</h1>
@@ -812,144 +815,7 @@ regenerate the whole component.</div>
     </div>
 
     <!-- SLIDE 6a: Prompting — Anatomy -->
-    <div class="slide">
-      <div class="readme">
-        <h1>prompting/anatomy.md</h1>
-        <p>Every strong Figma-to-code prompt has five ingredients. Miss one and Claude has to guess. Guessing produces generic output.</p>
-
-        <h2>The 5 ingredients</h2>
-        <table class="gh-table">
-          <thead><tr><th>#</th><th>Ingredient</th><th>Why it matters</th><th>Example</th></tr></thead>
-          <tbody>
-            <tr><td><span class="pill pill-purple">①</span></td><td><strong>Figma node URL</strong></td><td>Points Claude to the exact component, not the whole file</td><td><code>?node-id=4-23</code></td></tr>
-            <tr><td><span class="pill pill-blue">②</span></td><td><strong>Stack</strong></td><td>Without this Claude picks defaults that may not match your codebase</td><td><code>Next.js 15, Tailwind, TypeScript</code></td></tr>
-            <tr><td><span class="pill pill-yellow">③</span></td><td><strong>Token file path</strong></td><td>Single biggest quality multiplier — no hardcoded hex values</td><td><code>/tokens/index.ts</code></td></tr>
-            <tr><td><span class="pill pill-green">④</span></td><td><strong>Pattern reference</strong></td><td>Claude matches your file structure, naming, and code style</td><td><code>/components/Card.tsx</code></td></tr>
-            <tr><td><span class="pill pill-red">⑤</span></td><td><strong>Intent / requirements</strong></td><td>What you need out — variants, ARIA, stories, output format</td><td><code>All variants · ARIA · Storybook</code></td></tr>
-          </tbody>
-        </table>
-
-        <h2>Without vs with</h2>
-        <div class="code-block">
-          <div class="code-header"><span class="code-lang">✗ missing ingredients</span></div>
-          <div class="code-body"><span class="c"># Claude has to guess everything</span>
-"Build this component for me."
-
-<span class="c"># Result: generic, unstyled, wrong framework,</span>
-<span class="c"># hardcoded values, no variants, no stories.</span></div>
-        </div>
-        <div class="code-block">
-          <div class="code-header"><span class="code-lang">✓ all 5 present</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
-          <div class="code-body">Implement ProductCard from https://figma.com/design/abc?node-id=4-23
-
-Stack: Next.js 15, Tailwind CSS, TypeScript
-Tokens: /tokens/index.ts — no hardcoded values
-Pattern: follow /components/Card.tsx for structure
-Match all Figma variants · ARIA-compliant · Storybook story per variant</div>
-        </div>
-
-        <div class="alert alert-tip">
-          <span class="alert-icon">💡</span>
-          <span><strong>Always use node-specific URLs.</strong> Right-click any frame or component in Figma → Copy link. The URL contains <code>?node-id=X-Y</code>. A whole-page URL floods Claude with noise from every other frame on the page.</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 6b: Prompting — Weak vs Strong -->
-    <div class="slide">
-      <div class="readme">
-        <h1>prompting/examples.md</h1>
-        <p>Real before/after pairs. The weak version is what most people write first. The strong version is what ships.</p>
-
-        <h2>Side by side</h2>
-        <table class="gh-table">
-          <thead><tr><th>Weak ✗</th><th>Strong ✓</th></tr></thead>
-          <tbody>
-            <tr><td><code>"Make it look like the design."</code></td><td><code>"Implement ProductCard from [link]. Match the hover variant — lifts 4px with a soft diffuse shadow."</code></td></tr>
-            <tr><td><code>"The spacing is off, fix it."</code></td><td><code>"Gap between icon and label is hardcoded at 4px — change to the spacing/xs token."</code></td></tr>
-            <tr><td><code>"Add a hover state."</code></td><td><code>"Entrance should feel like the element is settling, not snapping. Match the easing from the Figma prototype."</code></td></tr>
-            <tr><td><code>"Make it accessible."</code></td><td><code>"Focus ring must use the color/focus token. All interactive elements need ARIA labels. Keyboard navigable."</code></td></tr>
-            <tr><td><code>"It changed, update it."</code></td><td><code>"Diff /components/Card.tsx against [updated link]. Apply only visual changes — preserve all props, handlers, logic."</code></td></tr>
-          </tbody>
-        </table>
-
-        <h2>What makes a prompt fail</h2>
-        <table class="gh-table">
-          <thead><tr><th>Problem</th><th>Fix</th></tr></thead>
-          <tbody>
-            <tr><td>Whole-page Figma URL</td><td>Use node-specific URL (<code>?node-id=X-Y</code>)</td></tr>
-            <tr><td>No stack context</td><td>Specify framework + CSS approach</td></tr>
-            <tr><td>No token reference</td><td>Point to your actual token file</td></tr>
-            <tr><td>12 components at once</td><td>One component per conversation</td></tr>
-            <tr><td>No pattern reference</td><td>Link to an existing similar component</td></tr>
-            <tr><td>Vague intent</td><td>Describe design intent, not implementation</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- SLIDE 6c: Prompting — Templates -->
-    <div class="slide">
-      <div class="readme">
-        <h1>prompting/templates.md</h1>
-        <p>Copy-paste ready. Adapt the bracketed parts to your project.</p>
-
-        <h2>New component</h2>
-        <div class="code-block">
-          <div class="code-header"><span class="code-lang">prompt template</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
-          <div class="code-body">Implement [COMPONENT_NAME] from [FIGMA_URL]
-
-Stack: [Next.js / React / Vue], [Tailwind / CSS Modules], TypeScript
-Tokens: [/tokens/index.ts] — no hardcoded values
-Pattern: follow [/components/Card.tsx] for structure
-
-Requirements:
-- Match all Figma variant states (hover, focus, disabled)
-- Keyboard navigable, ARIA-labelled
-- No inline styles, no hardcoded values
-- Storybook story for each variant
-- TypeScript strict mode</div>
-        </div>
-
-        <h2>Design updated — patch only</h2>
-        <div class="code-block">
-          <div class="code-header"><span class="code-lang">prompt template</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
-          <div class="code-body">The design for [COMPONENT] changed. Updated link: [FIGMA_URL]
-
-Read the current [FILE_PATH] and apply only the visual
-changes. Preserve all logic, state management, event
-handlers, and prop interfaces. Output a minimal diff.</div>
-        </div>
-
-        <h2>Token extraction</h2>
-        <div class="code-block">
-          <div class="code-header"><span class="code-lang">prompt template</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
-          <div class="code-body">Extract all design tokens from [FIGMA_URL].
-
-Output three files:
-1. tokens/variables.css — CSS custom properties
-2. tokens/index.ts — typed JS token object
-3. tokens/tailwind.ts — Tailwind theme extension
-
-Group by: color, spacing, typography, radius, shadow.
-kebab-case for CSS vars, camelCase for JS keys.</div>
-        </div>
-
-        <h2>Design critique</h2>
-        <div class="code-block">
-          <div class="code-header"><span class="code-lang">prompt template</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
-          <div class="code-body">Review this component against the Figma spec.
-Figma: [FIGMA_URL]
-Screenshot of built component: [attached]
-
-Find: spacing drift, colours not matching tokens,
-border-radius inconsistencies, missing interaction states.
-Flag each as: 🔴 blocks ship · 🟡 before release · 🟢 OK</div>
-        </div>
-      </div>
-    </div>
-
-        <!-- Figma Web Gap -->
+    <!-- Workflow — Figma Web Gap -->
     <div class="slide">
       <div class="readme">
         <h1>workflow/figma-web-gap.md</h1>
@@ -1036,6 +902,7 @@ Flag each as: 🔴 blocks ship · 🟡 before release · 🟢 OK</div>
     </div>
 
 <!-- SLIDE 7: Limits -->
+    <!-- Workflow — Limits -->
     <div class="slide">
       <div class="readme">
         <h1>workflow/limits.md</h1>
@@ -1078,6 +945,7 @@ Flag each as: 🔴 blocks ship · 🟡 before release · 🟢 OK</div>
     </div>
 
     <!-- SLIDE 8: Code → Figma -->
+    <!-- Workflow — Code to Figma -->
     <div class="slide">
       <div class="readme">
         <h1>workflow/code-to-figma.md <span class="pill pill-yellow" style="font-size:10px;margin-left:8px">Feb 2026</span></h1>
@@ -1124,6 +992,148 @@ Use FIGMA_TOKEN env var for auth."</span></div>
     </div>
 
     <!-- SLIDE 9: Skills Intro -->
+    <!-- Prompting — Anatomy -->
+    <div class="slide">
+      <div class="readme">
+        <h1>prompting/anatomy.md</h1>
+        <p>Every strong Figma-to-code prompt has five ingredients. Miss one and Claude has to guess. Guessing produces generic output.</p>
+
+        <h2>The 5 ingredients</h2>
+        <table class="gh-table">
+          <thead><tr><th>#</th><th>Ingredient</th><th>Why it matters</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td><span class="pill pill-purple">①</span></td><td><strong>Figma node URL</strong></td><td>Points Claude to the exact component, not the whole file</td><td><code>?node-id=4-23</code></td></tr>
+            <tr><td><span class="pill pill-blue">②</span></td><td><strong>Stack</strong></td><td>Without this Claude picks defaults that may not match your codebase</td><td><code>Next.js 15, Tailwind, TypeScript</code></td></tr>
+            <tr><td><span class="pill pill-yellow">③</span></td><td><strong>Token file path</strong></td><td>Single biggest quality multiplier — no hardcoded hex values</td><td><code>/tokens/index.ts</code></td></tr>
+            <tr><td><span class="pill pill-green">④</span></td><td><strong>Pattern reference</strong></td><td>Claude matches your file structure, naming, and code style</td><td><code>/components/Card.tsx</code></td></tr>
+            <tr><td><span class="pill pill-red">⑤</span></td><td><strong>Intent / requirements</strong></td><td>What you need out — variants, ARIA, stories, output format</td><td><code>All variants · ARIA · Storybook</code></td></tr>
+          </tbody>
+        </table>
+
+        <h2>Without vs with</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">✗ missing ingredients</span></div>
+          <div class="code-body"><span class="c"># Claude has to guess everything</span>
+"Build this component for me."
+
+<span class="c"># Result: generic, unstyled, wrong framework,</span>
+<span class="c"># hardcoded values, no variants, no stories.</span></div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">✓ all 5 present</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+          <div class="code-body">Implement ProductCard from https://figma.com/design/abc?node-id=4-23
+
+Stack: Next.js 15, Tailwind CSS, TypeScript
+Tokens: /tokens/index.ts — no hardcoded values
+Pattern: follow /components/Card.tsx for structure
+Match all Figma variants · ARIA-compliant · Storybook story per variant</div>
+        </div>
+
+        <div class="alert alert-tip">
+          <span class="alert-icon">💡</span>
+          <span><strong>Always use node-specific URLs.</strong> Right-click any frame or component in Figma → Copy link. The URL contains <code>?node-id=X-Y</code>. A whole-page URL floods Claude with noise from every other frame on the page.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6b: Prompting — Weak vs Strong -->
+    <!-- Prompting — Examples -->
+    <div class="slide">
+      <div class="readme">
+        <h1>prompting/examples.md</h1>
+        <p>Real before/after pairs. The weak version is what most people write first. The strong version is what ships.</p>
+
+        <h2>Side by side</h2>
+        <table class="gh-table">
+          <thead><tr><th>Weak ✗</th><th>Strong ✓</th></tr></thead>
+          <tbody>
+            <tr><td><code>"Make it look like the design."</code></td><td><code>"Implement ProductCard from [link]. Match the hover variant — lifts 4px with a soft diffuse shadow."</code></td></tr>
+            <tr><td><code>"The spacing is off, fix it."</code></td><td><code>"Gap between icon and label is hardcoded at 4px — change to the spacing/xs token."</code></td></tr>
+            <tr><td><code>"Add a hover state."</code></td><td><code>"Entrance should feel like the element is settling, not snapping. Match the easing from the Figma prototype."</code></td></tr>
+            <tr><td><code>"Make it accessible."</code></td><td><code>"Focus ring must use the color/focus token. All interactive elements need ARIA labels. Keyboard navigable."</code></td></tr>
+            <tr><td><code>"It changed, update it."</code></td><td><code>"Diff /components/Card.tsx against [updated link]. Apply only visual changes — preserve all props, handlers, logic."</code></td></tr>
+          </tbody>
+        </table>
+
+        <h2>What makes a prompt fail</h2>
+        <table class="gh-table">
+          <thead><tr><th>Problem</th><th>Fix</th></tr></thead>
+          <tbody>
+            <tr><td>Whole-page Figma URL</td><td>Use node-specific URL (<code>?node-id=X-Y</code>)</td></tr>
+            <tr><td>No stack context</td><td>Specify framework + CSS approach</td></tr>
+            <tr><td>No token reference</td><td>Point to your actual token file</td></tr>
+            <tr><td>12 components at once</td><td>One component per conversation</td></tr>
+            <tr><td>No pattern reference</td><td>Link to an existing similar component</td></tr>
+            <tr><td>Vague intent</td><td>Describe design intent, not implementation</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SLIDE 6c: Prompting — Templates -->
+    <!-- Prompting — Templates -->
+    <div class="slide">
+      <div class="readme">
+        <h1>prompting/templates.md</h1>
+        <p>Copy-paste ready. Adapt the bracketed parts to your project.</p>
+
+        <h2>New component</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">prompt template</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+          <div class="code-body">Implement [COMPONENT_NAME] from [FIGMA_URL]
+
+Stack: [Next.js / React / Vue], [Tailwind / CSS Modules], TypeScript
+Tokens: [/tokens/index.ts] — no hardcoded values
+Pattern: follow [/components/Card.tsx] for structure
+
+Requirements:
+- Match all Figma variant states (hover, focus, disabled)
+- Keyboard navigable, ARIA-labelled
+- No inline styles, no hardcoded values
+- Storybook story for each variant
+- TypeScript strict mode</div>
+        </div>
+
+        <h2>Design updated — patch only</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">prompt template</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+          <div class="code-body">The design for [COMPONENT] changed. Updated link: [FIGMA_URL]
+
+Read the current [FILE_PATH] and apply only the visual
+changes. Preserve all logic, state management, event
+handlers, and prop interfaces. Output a minimal diff.</div>
+        </div>
+
+        <h2>Token extraction</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">prompt template</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+          <div class="code-body">Extract all design tokens from [FIGMA_URL].
+
+Output three files:
+1. tokens/variables.css — CSS custom properties
+2. tokens/index.ts — typed JS token object
+3. tokens/tailwind.ts — Tailwind theme extension
+
+Group by: color, spacing, typography, radius, shadow.
+kebab-case for CSS vars, camelCase for JS keys.</div>
+        </div>
+
+        <h2>Design critique</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">prompt template</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+          <div class="code-body">Review this component against the Figma spec.
+Figma: [FIGMA_URL]
+Screenshot of built component: [attached]
+
+Find: spacing drift, colours not matching tokens,
+border-radius inconsistencies, missing interaction states.
+Flag each as: 🔴 blocks ship · 🟡 before release · 🟢 OK</div>
+        </div>
+      </div>
+    </div>
+
+        <!-- Figma Web Gap -->
+    <!-- Skills — Intro -->
     <div class="slide">
       <div class="readme">
         <h1>skills/intro.md</h1>
@@ -1183,6 +1193,7 @@ npx skills update
     </div>
 
     <!-- SLIDE 10: Build a skill -->
+    <!-- Skills — Build -->
     <div class="slide">
       <div class="readme">
         <h1>skills/build.md</h1>
@@ -1250,6 +1261,7 @@ npx skills add anthropics/skills --skill skill-creator
     </div>
 
     <!-- SLIDE 11: Skills Registry -->
+    <!-- Skills — Registry -->
     <div class="slide">
       <div class="readme">
         <h1>skills/registry.md</h1>
@@ -1305,6 +1317,7 @@ npx skills find "design system"</div>
     </div>
 
     <!-- SLIDE 12: Console MCP -->
+    <!-- Tools — Console MCP -->
     <div class="slide">
       <div class="readme">
         <h1>tools/console-mcp.md <span class="pill pill-purple" style="font-size:10px;margin-left:8px">★ 436</span></h1>
@@ -1356,57 +1369,127 @@ claude mcp add figma-console -s user \
     </div>
 
     <!-- SLIDE 13: Changelog / Resources -->
+    <!-- Team — Ways of Working -->
     <div class="slide">
       <div class="readme">
-        <h1>CHANGELOG.md</h1>
-        <p>Key milestones, resources, and credits.</p>
+        <h1>team/ways-of-working.md</h1>
+        <p>The tooling changed. The team structure question didn't get easier — it got more explicit. Here are the three models teams are actually running.</p>
 
-        <h2>Recent changes</h2>
-        <div class="code-block">
-          <div class="code-header"><span class="code-lang">changelog</span></div>
-          <div class="code-body"><span class="g">## Feb 2026 — Code → Figma officially launched</span>
-Capture live UI to editable Figma frames via Claude Code.
-Figma blog: figma.com/blog/introducing-claude-code-to-figma/
-
-<span class="g">## Jan 2026 — Agent Skills open standard</span>
-Vercel launches skills.sh + npx skills ecosystem.
-Cross-platform: Claude Code, Cursor, Codex, Gemini CLI, 35+ more.
-
-<span class="g">## 2025 — Claude Code native binary</span>
-npm install deprecated. curl | bash installs no-dep binary.
-Auto-updates in background.
-
-<span class="g">## 2025 — Figma Remote MCP</span>
-mcp.figma.com/mcp — no Figma Desktop app required.
-Two modes: remote (browser) + desktop (local/offline).</div>
+        <div class="alert alert-note">
+          <span class="alert-icon">ℹ️</span>
+          <span>There's no universally correct model. The right one depends on your team's trust level, code ownership culture, and where the bottleneck actually lives.</span>
         </div>
 
-        <h2>All resources</h2>
+        <h2>Model A — Designer vibes, dev integrates</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">ownership split</span></div>
+          <div class="code-body">Designer  →  Claude Code  →  UI components in repo
+Developer →  API, state, auth, business logic, integration
+
+<span class="c"># Designer ships components directly to the codebase.</span>
+<span class="c"># Dev wires them to data and handles everything non-visual.</span></div>
+        </div>
         <table class="gh-table">
-          <thead><tr><th>Resource</th><th>URL</th></tr></thead>
+          <thead><tr><th>Works when</th><th>Breaks when</th></tr></thead>
           <tbody>
-            <tr><td>Figma MCP Guide</td><td><a href="https://help.figma.com/hc/en-us/articles/32132100833559" target="_blank">help.figma.com ↗</a></td></tr>
-            <tr><td>Remote MCP Setup</td><td><a href="https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/" target="_blank">developers.figma.com ↗</a></td></tr>
-            <tr><td>Claude Code Install</td><td><a href="https://code.claude.com/docs/en/setup" target="_blank">code.claude.com ↗</a></td></tr>
-            <tr><td>Agent Skills Docs</td><td><a href="https://code.claude.com/docs/en/skills" target="_blank">code.claude.com/skills ↗</a></td></tr>
-            <tr><td>skills.sh directory</td><td><a href="https://skills.sh" target="_blank">skills.sh ↗</a></td></tr>
-            <tr><td>anthropics/skills</td><td><a href="https://github.com/anthropics/skills" target="_blank">github.com/anthropics/skills ↗</a></td></tr>
-            <tr><td>vercel-labs/agent-skills</td><td><a href="https://github.com/vercel-labs/agent-skills" target="_blank">github.com/vercel-labs ↗</a></td></tr>
-            <tr><td>figma-console-mcp</td><td><a href="https://github.com/southleft/figma-console-mcp" target="_blank">github.com/southleft ↗</a></td></tr>
-            <tr><td>claude-to-figma skill</td><td><a href="https://github.com/designagentlab/skills/tree/main/claude-to-figma" target="_blank">github.com/designagentlab ↗</a></td></tr>
-            <tr><td>Code→Figma blog</td><td><a href="https://www.figma.com/blog/introducing-claude-code-to-figma/" target="_blank">figma.com/blog ↗</a></td></tr>
+            <tr><td>Designer is comfortable reading and committing Claude Code output</td><td>Components don't follow codebase conventions — no one catches drift</td></tr>
+            <tr><td>Clear contract: where UI ends, business logic begins</td><td>"Claude wrote it" is used to dodge review comments</td></tr>
+            <tr><td>Design system is tokenised — tokens in code, not just Figma</td><td>Designer ships components with hardcoded values, dev has to fix</td></tr>
           </tbody>
         </table>
 
-        <div class="divider"></div>
-        <p style="font-size:12px;font-family:var(--mono);color:var(--gh-text-muted)">Built by <strong style="color:var(--gh-text)">Taroon Tyagi</strong> · Principal Designer · March 2026 · No Keynote was harmed.</p>
+        <h2>Model B — Designer designs, dev vibes</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">ownership split</span></div>
+          <div class="code-body">Designer  →  Figma (structured: named layers, tokens, variants)
+Developer →  Claude Code reads Figma via MCP  →  full implementation
+
+<span class="c"># Dev implements from spec. Designer reviews output.</span>
+<span class="c"># Traditional roles, Claude accelerates the dev side.</span></div>
+        </div>
+        <table class="gh-table">
+          <thead><tr><th>Works when</th><th>Breaks when</th></tr></thead>
+          <tbody>
+            <tr><td>Figma file is well-structured — named layers, Auto Layout, Variables</td><td>Figma files are messy — Claude approximates, drift goes unnoticed</td></tr>
+            <tr><td>Designer and dev have a shared, fast review ritual</td><td>Review is async and slow — drift compounds across components</td></tr>
+            <tr><td>Dev bottleneck is the team's constraint</td><td>Design system changes outpace dev's ability to review output quality</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Model C — Fluid, with explicit ownership</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">ownership split</span></div>
+          <div class="code-body">Both designer and developer use Claude.
+The question is not who writes — it is who owns the PR.
+
+<span class="c"># Whoever merges it is responsible for spec fidelity.</span>
+<span class="c"># Works at high trust. Collapses without code ownership culture.</span></div>
+        </div>
+
+        <h2>The questions that actually matter</h2>
+        <table class="gh-table">
+          <thead><tr><th>Question</th><th>Why it matters</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Who reviews Claude's output?</strong></td><td>Someone with both design and code context must own the final check. Claude is not the last line of defence.</td></tr>
+            <tr><td><strong>Where does the design system live?</strong></td><td>If it's only in Figma, Model A is risky. If tokens exist in code too, Model A becomes viable.</td></tr>
+            <tr><td><strong>What's the actual bottleneck?</strong></td><td>If dev is the bottleneck → Models A or B. If design review is the bottleneck → faster review cycles first.</td></tr>
+            <tr><td><strong>Are you drifting into a model?</strong></td><td>Have the conversation explicitly. Decide. Revisit in 6 weeks.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-warn">
+          <span class="alert-icon">⚠️</span>
+          <span><strong>The failure mode all three models share:</strong> no one owns the design-code parity check. Build that ritual first — before deciding who uses which tool.</span>
+        </div>
       </div>
     </div>
 
-  </div><!-- /slides-track --></div><!-- /zoom-wrapper -->
+    <!-- SLIDE 1: README / Hero -->
+    <!-- Changelog -->
+        <!-- Tools — Console MCP -->
+    <!-- Changelog -->
+    <div class="slide">
+      <div class="readme">
+        <h1>CHANGELOG.md</h1>
+        <p>Key updates, resources, and closing notes.</p>
+
+        <h2>What's new</h2>
+        <table class="gh-table">
+          <thead><tr><th>Version</th><th>What changed</th></tr></thead>
+          <tbody>
+            <tr><td><span class="pill pill-green">v1.18.0</span></td><td>figma-console-mcp — Design Annotations read/write, 87+ tools total</td></tr>
+            <tr><td><span class="pill pill-blue">Mar 2026</span></td><td>Code → Figma bidirectional loop — capture live UI back to Figma as editable frames</td></tr>
+            <tr><td><span class="pill pill-blue">Mar 2026</span></td><td>Cloud Mode — full write access from Claude.ai, v0, Lovable, Replit (no Node.js)</td></tr>
+            <tr><td><span class="pill pill-blue">Feb 2026</span></td><td>Figma Slides support — 15 tools for programmatic presentation management</td></tr>
+            <tr><td><span class="pill pill-purple">This deck</span></td><td>CLAUDE.md slide, Prompting section (3 slides), Figma→Web Gap, Ways of Working</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Key resources</h2>
+        <table class="gh-table">
+          <thead><tr><th>Resource</th><th>URL</th></tr></thead>
+          <tbody>
+            <tr><td>Claude Code install</td><td><a href="https://code.claude.com/docs/en/setup" target="_blank">code.claude.com/docs/en/setup</a></td></tr>
+            <tr><td>Figma MCP guide</td><td><a href="https://help.figma.com/hc/en-us/articles/32132100833559" target="_blank">help.figma.com ↗</a></td></tr>
+            <tr><td>figma-console-mcp docs</td><td><a href="https://docs.figma-console-mcp.southleft.com" target="_blank">docs.figma-console-mcp.southleft.com ↗</a></td></tr>
+            <tr><td>figma-console-mcp vs Figma MCP</td><td><a href="https://docs.figma-console-mcp.southleft.com/figma-mcp-vs-figma-console-mcp" target="_blank">Full comparison ↗</a></td></tr>
+            <tr><td>Agent Skills docs</td><td><a href="https://code.claude.com/docs/en/skills" target="_blank">code.claude.com/docs/en/skills</a></td></tr>
+            <tr><td>skills.sh directory</td><td><a href="https://skills.sh" target="_blank">skills.sh ↗</a></td></tr>
+            <tr><td>anthropics/skills</td><td><a href="https://github.com/anthropics/skills" target="_blank">github.com/anthropics/skills ↗</a></td></tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-note">
+          <span class="alert-icon">✦</span>
+          <span>Built by <strong>Taroon Tyagi</strong> · Principal Designer · March 2026<br>
+          Questions, corrections, or additions → open an issue on the repo.</span>
+        </div>
+      </div>
+    </div>
+
+</div><!-- /slides-track --></div><!-- /zoom-wrapper -->
 </div><!-- /main -->
 
-<!-- STATUS BAR -->
 <div class="statusbar">
   <div class="status-left">
     <span class="status-branch">
@@ -1441,78 +1524,12 @@ Two modes: remote (browser) + desktop (local/offline).</div>
 </div>
 
 <script>
-  // ── ZOOM SYSTEM ────────────────────────────────────────────────────────────
-  const ZOOM_STEPS = [50, 67, 75, 90, 100, 110, 125, 150, 175, 200];
-  let zoomIndex = ZOOM_STEPS.indexOf(100);
-  let isFocusMode = false;
-  const zoomWrapper = document.getElementById('zoom-wrapper');
-
-  function applyZoom() {
-    const z = ZOOM_STEPS[zoomIndex] / 100;
-    zoomWrapper.style.transform = `scale(${z})`;
-    const label = ZOOM_STEPS[zoomIndex] + '%';
-    document.getElementById('zoom-label').textContent = label;
-    document.getElementById('status-zoom').textContent = label;
-  }
-
-  function zoomIn()    { if (isFocusMode) return; if (zoomIndex < ZOOM_STEPS.length-1) { zoomIndex++; applyZoom(); } }
-  function zoomOut()   { if (isFocusMode) return; if (zoomIndex > 0) { zoomIndex--; applyZoom(); } }
-  function zoomReset() { if (isFocusMode) return; zoomIndex = ZOOM_STEPS.indexOf(100); applyZoom(); }
-
-  // Ctrl/Cmd + scroll to zoom
-  document.querySelector('.main').addEventListener('wheel', e => {
-    if (e.ctrlKey || e.metaKey) { e.preventDefault(); e.deltaY < 0 ? zoomIn() : zoomOut(); }
-  }, { passive: false });
-
-  // ── FOCUS MODE ─────────────────────────────────────────────────────────────
-  function computeFitScale() {
-    const slide = document.querySelectorAll('.slide')[current];
-    if (!slide) return 1;
-    // Use natural content size, not current rendered size which is viewport-dependent
-    const readme = slide.querySelector('.readme');
-    const contentW = readme ? readme.scrollWidth  : slide.scrollWidth;
-    const contentH = readme ? readme.scrollHeight : slide.scrollHeight;
-    const pad = 60;
-    const vw = window.innerWidth  - pad * 2;
-    const vh = window.innerHeight - pad * 2;
-    const scale = Math.min(vw / contentW, vh / contentH, 2);
-    return +Math.max(scale, 0.25).toFixed(4);
-  }
-
-  function applyFitZoom() {
-    const s = computeFitScale();
-    zoomWrapper.style.transform = `scale(${s})`;
-    const pct = Math.round(s * 100) + '%';
-    document.getElementById('zoom-label').textContent = pct;
-    document.getElementById('status-zoom').textContent = pct;
-  }
-
-  function enterFocusMode() {
-    isFocusMode = true;
-    document.body.classList.remove('panels-hidden');
-    document.body.classList.add('focus-mode');
-    // Wait two frames — one for CSS to apply, one for layout reflow
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      applyFitZoom();
-    }));
-  }
-
-  function exitFocusMode() {
-    isFocusMode = false;
-    document.body.classList.remove('focus-mode');
-    applyZoom();
-  }
-
-  function toggleFocusMode() { isFocusMode ? exitFocusMode() : enterFocusMode(); }
-
-  window.addEventListener('resize', () => { if (isFocusMode) applyFitZoom(); });
-
-
 const slideData = [
   { file:'README.md',                  section:''          },
   { file:'setup/install.sh',           section:'setup'     },
   { file:'setup/mcp-config.md',        section:'setup'     },
   { file:'setup/figma-prep.md',        section:'setup'     },
+  { file:'setup/claude-md.md',         section:'setup'     },
   { file:'workflow/loop.md',           section:'workflow'  },
   { file:'workflow/figma-web-gap.md',  section:'workflow'  },
   { file:'workflow/limits.md',         section:'workflow'  },
@@ -1543,7 +1560,7 @@ slideData.forEach((s, i) => {
 
 const fileIcon = f => f.endsWith('.sh') ? '📜' : '📄';
 
-// treeItems[slideIndex] = the DOM element for that slide — direct map, no index confusion
+// treeItems[slideIndex] = DOM element — direct map, no index confusion
 const treeItems = [];
 
 Object.entries(sections).forEach(([sec, files]) => {
@@ -1558,7 +1575,6 @@ Object.entries(sections).forEach(([sec, files]) => {
     const item = document.createElement('div');
     item.className = 'tree-item';
     item.style.paddingLeft = sec === '' ? '12px' : '22px';
-    // Store icon and name as children — never use innerHTML+= after this
     const icon = document.createElement('span');
     icon.className = 'tree-icon';
     icon.textContent = fileIcon(file);
@@ -1572,7 +1588,7 @@ Object.entries(sections).forEach(([sec, files]) => {
     item.append(icon, label, badge);
     item.addEventListener('click', () => goTo(index));
     treeList.appendChild(item);
-    treeItems[index] = item; // keyed by slide index — no DOM order confusion
+    treeItems[index] = item;
   });
 });
 
@@ -1586,7 +1602,6 @@ function goTo(n) {
   current = n;
   track.style.transform = `translateX(${-current * 100}%)`;
 
-  // Update tree using the direct treeItems map
   treeItems.forEach((el, i) => {
     const isActive = i === current;
     el.classList.toggle('active', isActive);
@@ -1599,7 +1614,7 @@ function goTo(n) {
   document.getElementById('progress').style.width = `${((current+1)/total*100).toFixed(1)}%`;
   document.getElementById('status-file').textContent = slideData[current].file;
   treeItems[current]?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-  if (isFocusMode) setTimeout(() => requestAnimationFrame(applyFitZoom), 50);
+  if (isFocusMode) setTimeout(() => requestAnimationFrame(applyFocusZoom), 50);
 }
 
 function nextSlide() { goTo(current + 1); }
@@ -1613,7 +1628,6 @@ function toggleSidebar() {
   document.body.classList.toggle('sidebar-open');
 }
 
-// Copy code blocks
 function copyCode(btn) {
   const code = btn.closest('.code-block').querySelector('.code-body').innerText;
   navigator.clipboard?.writeText(code.trim());
@@ -1621,27 +1635,85 @@ function copyCode(btn) {
   setTimeout(() => btn.textContent = 'Copy', 1500);
 }
 
+// ── ZOOM ──────────────────────────────────────────────────────────────────────
+const ZOOM_STEPS = [50, 67, 75, 90, 100, 110, 125, 150, 175, 200];
+let zoomIndex = ZOOM_STEPS.indexOf(100);
+let isFocusMode = false;
+const zoomWrapper = document.getElementById('zoom-wrapper');
+
+function applyZoom() {
+  const z = ZOOM_STEPS[zoomIndex] / 100;
+  zoomWrapper.style.transform = `scale(${z})`;
+  const label = ZOOM_STEPS[zoomIndex] + '%';
+  document.getElementById('zoom-label').textContent = label;
+  document.getElementById('status-zoom').textContent = label;
+}
+
+function zoomIn()    { if (isFocusMode) return; if (zoomIndex < ZOOM_STEPS.length-1) { zoomIndex++; applyZoom(); } }
+function zoomOut()   { if (isFocusMode) return; if (zoomIndex > 0) { zoomIndex--; applyZoom(); } }
+function zoomReset() { if (isFocusMode) return; zoomIndex = ZOOM_STEPS.indexOf(100); applyZoom(); }
+
+document.querySelector('.main').addEventListener('wheel', e => {
+  if (e.ctrlKey || e.metaKey) { e.preventDefault(); e.deltaY < 0 ? zoomIn() : zoomOut(); }
+}, { passive: false });
+
+// ── FOCUS MODE ────────────────────────────────────────────────────────────────
+function computeFitScale() {
+  const slide = document.querySelectorAll('.slide')[current];
+  if (!slide) return 1;
+  const readme = slide.querySelector('.readme');
+  const contentW = readme ? readme.scrollWidth  : slide.scrollWidth;
+  const contentH = readme ? readme.scrollHeight : slide.scrollHeight;
+  const pad = 60;
+  const vw = window.innerWidth  - pad * 2;
+  const vh = window.innerHeight - pad * 2;
+  return +Math.max(Math.min(vw / contentW, vh / contentH, 2), 0.25).toFixed(4);
+}
+
+function applyFocusZoom() {
+  const s = computeFitScale();
+  zoomWrapper.style.transform = `scale(${s})`;
+  const pct = Math.round(s * 100) + '%';
+  document.getElementById('zoom-label').textContent = pct;
+  document.getElementById('status-zoom').textContent = pct;
+}
+
+function enterFocusMode() {
+  isFocusMode = true;
+  document.body.classList.remove('panels-hidden');
+  document.body.classList.add('focus-mode');
+  zoomWrapper.style.transform = '';
+  requestAnimationFrame(() => requestAnimationFrame(applyFocusZoom));
+}
+
+function exitFocusMode() {
+  isFocusMode = false;
+  document.body.classList.remove('focus-mode');
+  applyZoom();
+}
+
+function toggleFocusMode() { isFocusMode ? exitFocusMode() : enterFocusMode(); }
+
+window.addEventListener('resize', () => { if (isFocusMode) applyFocusZoom(); });
+
+// ── KEYBOARD ──────────────────────────────────────────────────────────────────
 document.addEventListener('keydown', e => {
   if (['ArrowRight','ArrowDown'].includes(e.key)) { e.preventDefault(); nextSlide(); }
   if (['ArrowLeft','ArrowUp'].includes(e.key)) { e.preventDefault(); prevSlide(); }
   if (e.key === 'f' || e.key === 'F') toggleFullscreen();
   if (e.key >= '1' && e.key <= '9') goTo(parseInt(e.key) - 1);
-  // Zoom
   if ((e.key === '=' || e.key === '+') && (e.ctrlKey || e.metaKey)) { e.preventDefault(); zoomIn(); }
   if (e.key === '-' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); zoomOut(); }
   if (e.key === '0' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); zoomReset(); }
-  // \ — toggle all panels
   if (e.key === '\\') { e.preventDefault(); if (isFocusMode) exitFocusMode(); else document.body.classList.toggle('panels-hidden'); }
-  // P — focus mode
   if (e.key === 'p' || e.key === 'P') { e.preventDefault(); toggleFocusMode(); }
-  // Esc — exit any mode
   if (e.key === 'Escape') {
     if (isFocusMode) exitFocusMode();
     else { document.body.classList.remove('panels-hidden'); document.getElementById('sidebar').classList.remove('open'); document.body.classList.remove('sidebar-open'); }
   }
 });
 
-// Touch swipe
+// ── TOUCH ─────────────────────────────────────────────────────────────────────
 let tx = 0;
 document.getElementById('zoom-wrapper').addEventListener('touchstart', e => tx = e.touches[0].clientX, {passive:true});
 document.getElementById('zoom-wrapper').addEventListener('touchend', e => {
@@ -1649,15 +1721,15 @@ document.getElementById('zoom-wrapper').addEventListener('touchend', e => {
   if (Math.abs(dx) > 50) dx < 0 ? nextSlide() : prevSlide();
 }, {passive:true});
 
-goTo(0);
+// ── DEEP LINK (from quickref) ─────────────────────────────────────────────────
+const _targetSlide = sessionStorage.getItem('targetSlide');
+if (_targetSlide !== null) {
+  sessionStorage.removeItem('targetSlide');
+  const _n = parseInt(_targetSlide, 10);
+  if (!isNaN(_n)) goTo(_n);
+}
 
-  // Deep link from quickref — jump to target slide on load
-  const _targetSlide = sessionStorage.getItem('targetSlide');
-  if (_targetSlide !== null) {
-    sessionStorage.removeItem('targetSlide');
-    const _n = parseInt(_targetSlide, 10);
-    if (!isNaN(_n)) goTo(_n);
-  }
+goTo(0);
 applyZoom();
 track.style.transition = 'none';
 requestAnimationFrame(() => { track.style.transition = ''; });

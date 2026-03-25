@@ -293,7 +293,7 @@
   </div>
   <div class="toolbar-mid">
     <button class="nav-btn" onclick="prevSlide()">◀ Prev</button>
-    <span class="slide-counter" id="counter">1 / 23</span>
+    <span class="slide-counter" id="counter">1 / 24</span>
     <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
   </div>
   <div class="toolbar-right">
@@ -318,7 +318,7 @@
   <div class="prop-section">
     <div class="prop-label">File</div>
     <div class="prop-row"><span class="prop-key">Author</span><span class="prop-val purple">Taroon Tyagi</span></div>
-    <div class="prop-row"><span class="prop-key">Slides</span><span class="prop-val">23</span></div>
+    <div class="prop-row"><span class="prop-key">Slides</span><span class="prop-val">24</span></div>
     <div class="prop-row"><span class="prop-key">Year</span><span class="prop-val">2026</span></div>
   </div>
   <div class="prop-section">
@@ -403,27 +403,27 @@
           <div class="card-title">Foundations</div>
           <div class="card-desc">Design tokens, Figma prep, Code Connect. → slides 4–6</div>
         </div>
-        <div class="card" style="cursor:pointer" onclick="goTo(6)">
+        <div class="card" style="cursor:pointer" onclick="goTo(7)">
           <span class="card-emoji">🔄</span>
           <div class="card-title">Workflow</div>
-          <div class="card-desc">The loop, visual thinking, Code → Canvas, components. → slides 7–10</div>
+          <div class="card-desc">The loop, visual thinking, Code → Canvas, components. → slides 8–11</div>
         </div>
-        <div class="card" style="cursor:pointer" onclick="goTo(10)">
+        <div class="card" style="cursor:pointer" onclick="goTo(11)">
           <span class="card-emoji">💬</span>
           <div class="card-title">Prompting</div>
           <div class="card-desc">Anatomy, weak vs strong, copy-paste templates. → slides 11–13</div>
         </div>
-        <div class="card" style="cursor:pointer" onclick="goTo(13)">
+        <div class="card" style="cursor:pointer" onclick="goTo(14)">
           <span class="card-emoji">🎯</span>
           <div class="card-title">Limits &amp; Tips</div>
           <div class="card-desc">Can Do, Can't Do, Pro Tips. Saves the sprint review argument. → slides 14–16</div>
         </div>
-        <div class="card" style="cursor:pointer" onclick="goTo(16)">
+        <div class="card" style="cursor:pointer" onclick="goTo(18)">
           <span class="card-emoji">🧠</span>
           <div class="card-title">Agent Skills</div>
           <div class="card-desc">What they are, how to build one, the prebuilt library. → slides 17–19</div>
         </div>
-        <div class="card" style="cursor:pointer" onclick="goTo(19)">
+        <div class="card" style="cursor:pointer" onclick="goTo(21)">
           <span class="card-emoji">🔌</span>
           <div class="card-title">figma-console-mcp <span class="badge-new">★436</span></div>
           <div class="card-desc">56+ tools. Plugin debugging, variable CRUD, design–code parity. → slide 20</div>
@@ -478,7 +478,7 @@
 
     <!-- SLIDE 4: DESIGN TOKENS -->
 
-    <div class="slide" data-frame="Frame 04 — Design Tokens" data-type="Tokens" data-section="System">
+    <div class="slide" data-frame="Frame 04 — Design Tokens" data-type="Tokens" data-section="Foundations">
       <div class="slide-tag">Design Tokens</div>
       <h2 class="slide-title">Figma Variables →<br><span style="color:var(--fig-purple)">The Token Foundation</span></h2>
       <div class="accent-line"></div>
@@ -515,7 +515,7 @@
 
     <!-- SLIDE 5: FIGMA PREP PART 1 -->
 
-    <div class="slide" data-frame="Frame 05 — Figma Prep" data-type="Setup" data-section="System">
+    <div class="slide" data-frame="Frame 05 — Figma Prep" data-type="Setup" data-section="Foundations">
       <div class="slide-tag">Figma Prep</div>
       <h2 class="slide-title">Structure Claude<br>Can Actually Read</h2>
       <div class="accent-line"></div>
@@ -551,7 +551,7 @@
 
     <!-- SLIDE 6: FIGMA PREP PART 2 -->
 
-    <div class="slide" data-frame="Frame 06 — Code Connect" data-type="Setup" data-section="System">
+    <div class="slide" data-frame="Frame 06 — Code Connect" data-type="Setup" data-section="Foundations">
       <div class="slide-tag">Code Connect</div>
       <h2 class="slide-title">Code Connect —<br><span style="color:var(--fig-blue)">Close the Loop</span></h2>
       <div class="accent-line"></div>
@@ -587,6 +587,62 @@
 
     <!-- SLIDE 7: DESIGN WORKFLOW -->
 
+    <div class="slide" data-frame="Frame D-CLAUDEmd — CLAUDE.md" data-type="Setup" data-section="Foundations">
+      <div class="slide-tag">CLAUDE.md</div>
+      <h2 class="slide-title">The File Claude<br><span style="color:var(--fig-purple)">Reads Every Session</span></h2>
+      <div class="accent-line"></div>
+      <div class="slide-scroll">
+        <div class="callout info">
+          <span class="icon">📄</span>
+          <span>A <span class="hl">CLAUDE.md</span> file in your project root is Claude Code's persistent memory for that project. It loads automatically at the start of every session — no prompting required. Think of it as onboarding a new developer who joins your team every single conversation.</span>
+        </div>
+        <div class="cards cards-2" style="margin-top:12px">
+          <div class="card">
+            <span class="card-emoji">🎨</span>
+            <div class="card-title">Design System Context</div>
+            <div class="card-desc">Where your tokens live, what your component naming convention is, which Figma file is the source of truth. Claude stops asking — it already knows.</div>
+          </div>
+          <div class="card">
+            <span class="card-emoji">⚙️</span>
+            <div class="card-title">Stack & Conventions</div>
+            <div class="card-desc">Framework, CSS approach, TypeScript strictness, file structure. Claude matches your existing patterns instead of inventing its own.</div>
+          </div>
+          <div class="card">
+            <span class="card-emoji">🚫</span>
+            <div class="card-title">What NOT To Do</div>
+            <div class="card-desc">No inline styles. No hardcoded hex values. No <span class="hl-red">!important</span>. Don't touch <span class="hl-red">/legacy</span>. Rules you've established the hard way — Claude respects them.</div>
+          </div>
+          <div class="card">
+            <span class="card-emoji">👥</span>
+            <div class="card-title">Team-wide Benefit</div>
+            <div class="card-desc">Commit it to the repo. Every designer and developer on the team gets the same Claude behaviour immediately — no per-person setup.</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <p style="font-size:11px;font-family:'Fragment Mono',monospace;color:var(--fig-purple-light);margin-bottom:8px">✦ Starter template for design-system projects</p>
+        <div style="background:var(--fig-bg);border:1px solid var(--fig-border);border-radius:6px;padding:14px 16px;font-size:10px;font-family:'Fragment Mono',monospace;color:var(--fig-muted);line-height:1.9">
+          <span style="color:var(--fig-purple-light)"># CLAUDE.md — [Project Name]</span><br><br>
+          <span style="color:var(--fig-blue)">## Stack</span><br>
+          Next.js 15 · Tailwind CSS · TypeScript strict · Storybook 8<br><br>
+          <span style="color:var(--fig-blue)">## Design System</span><br>
+          - Tokens: <span style="color:var(--fig-green)">/tokens/index.ts</span> — always reference, never hardcode<br>
+          - Figma source: <span style="color:var(--fig-green)">figma.com/design/[FILE_KEY]</span><br>
+          - Component pattern: follow <span style="color:var(--fig-green)">/components/Button.tsx</span><br><br>
+          <span style="color:var(--fig-blue)">## Conventions</span><br>
+          - kebab-case filenames, PascalCase components<br>
+          - No inline styles. No hardcoded colours or spacing.<br>
+          - Every component needs ARIA labels and keyboard navigation<br>
+          - Export a Storybook story for every new component<br><br>
+          <span style="color:var(--fig-blue)">## Do Not Touch</span><br>
+          - <span style="color:var(--fig-red)">/legacy</span> — deprecated, scheduled for removal<br>
+          - <span style="color:var(--fig-red)">/tokens/legacy.css</span> — do not import or extend
+        </div>
+        <div class="callout green" style="margin-top:10px">
+          <span class="icon">⚡</span>
+          <span><strong style="color:var(--fig-text)">Do this first.</strong> Before writing your first prompt, before installing any skill. 10 minutes of CLAUDE.md setup saves hours of repeated context in every future session.</span>
+        </div>
+      </div>
+    </div>
     <div class="slide" data-frame="Frame 07 — Workflow" data-type="Workflow" data-section="Workflow">
       <div class="slide-tag">The Loop</div>
       <h2 class="slide-title">Figma → Claude → Component<br><span style="font-size:0.6em;color:var(--fig-muted)">Stay in the design chair</span></h2>
@@ -698,7 +754,7 @@
 
     <!-- SLIDE 11: COMPONENT SYSTEMS -->
 
-    <div class="slide" data-frame="Frame 11 — Component Systems" data-type="Advanced" data-section="System">
+    <div class="slide" data-frame="Frame 11 — Component Systems" data-type="Advanced" data-section="Workflow">
       <div class="slide-tag">Component Systems</div>
       <h2 class="slide-title">Building a Real<br><span style="color:var(--fig-purple)">Design System</span></h2>
       <div class="accent-line"></div>
@@ -733,7 +789,7 @@
     </div>
 
     <!-- PROMPTING SLIDE 1: ANATOMY -->
-    <div class="slide" data-frame="Frame 08 — Prompting" data-type="Workflow" data-section="Workflow">
+    <div class="slide" data-frame="Frame 08 — Prompting" data-type="Workflow" data-section="Prompting">
       <div class="slide-tag">Prompting · Anatomy</div>
       <h2 class="slide-title">The Anatomy of<br><span style="color:var(--fig-purple)">a Good Prompt</span></h2>
       <div class="accent-line"></div>
@@ -1031,7 +1087,7 @@
         </div>
       </div>
     </div>
-    <div class="slide" data-frame="Frame D-14 — Pro Tips" data-type="Advanced" data-section="Tips">
+    <div class="slide" data-frame="Frame D-14 — Pro Tips" data-type="Advanced" data-section="Limits">
       <div class="slide-tag">Pro Tips</div>
       <h2 class="slide-title">Things I Learned<br>The Hard Way</h2>
       <div class="accent-line"></div>
@@ -1264,66 +1320,62 @@
     </div>
 
     <div class="slide" data-frame="Frame D-18 — Console MCP" data-type="Advanced" data-section="Tools">
-      <div class="slide-tag">figma-console-mcp</div>
-      <div class="slide-tag">Bonus Tool · Community Pick <span class="badge-new">★ 436</span></div>
-      <h2 class="slide-title"><a href="https://github.com/southleft/figma-console-mcp" target="_blank" style="color:var(--fig-white)">figma-console-mcp</a><br><span style="font-size:0.6em;color:var(--fig-muted)">Your design system as an API</span></h2>
+      <div class="slide-tag">figma-console-mcp <span class="badge-new">★436</span></div>
+      <h2 class="slide-title"><a href="https://figma-console-mcp.southleft.com" target="_blank" style="color:var(--fig-white)">figma-console-mcp</a><br><span style="font-size:0.6em;color:var(--fig-muted)">Your design system as an API · 87+ tools</span></h2>
       <div class="accent-line"></div>
       <div class="slide-scroll">
         <div class="callout info">
           <span class="icon">🔌</span>
-          <span>This is NOT the official Figma MCP. It's a community-built server by <a href="https://southleft.com" target="_blank">southleft ↗</a> that goes much deeper — <strong style="color:var(--fig-text)">56+ tools</strong>, live plugin debugging, design creation, variable management, and design-code parity checks. Use it alongside the official one.</span>
+          <span>Community-built by <a href="https://southleft.com" target="_blank">Southleft ↗</a>. <strong style="color:var(--fig-text)">87+ dedicated tools</strong> vs 16+ in the official Figma MCP. Design system management, FigJam, Slides, design-code parity, real-time plugin debugging, and batch operations. Open source, no rate limits. <a href="https://docs.figma-console-mcp.southleft.com/figma-mcp-vs-figma-console-mcp" target="_blank">Full comparison ↗</a></span>
         </div>
         <div class="cards cards-3" style="margin-top:10px">
           <div class="card">
-            <span class="card-emoji">🐛</span>
-            <div class="card-title">Plugin Debugging</div>
-            <div class="card-desc">Capture real-time console logs, errors, and stack traces from Figma plugins. Watch logs stream as code runs. Essential for plugin devs.</div>
-          </div>
-          <div class="card">
-            <span class="card-emoji">✏️</span>
-            <div class="card-title">Design Creation</div>
-            <div class="card-desc">Tell Claude to <span class="hl">"Create a modal with header, body, and action buttons"</span> — it creates actual Figma frames. Not read-only. It writes.</div>
-          </div>
-          <div class="card">
             <span class="card-emoji">🔧</span>
             <div class="card-title">Variable Management</div>
-            <div class="card-desc">Full CRUD on Figma Variables. Create collections, add modes (Light/Dark), batch-create 100 tokens in one call. No Enterprise plan needed.</div>
-          </div>
-          <div class="card">
-            <span class="card-emoji">📊</span>
-            <div class="card-title">Design System Dashboard</div>
-            <div class="card-desc">Lighthouse-style health scorecard — naming, tokens, components, a11y, consistency, coverage. Scored 0–100. Ask: <span class="hl">"Audit my design system."</span></div>
-          </div>
-          <div class="card">
-            <span class="card-emoji">🎨</span>
-            <div class="card-title">Token Browser (MCP App)</div>
-            <div class="card-desc">Interactive UI rendered inline in Claude. Browse tokens by collection, filter by type, switch modes. Click-to-copy values. No context used.</div>
+            <div class="card-desc">Batch create/update up to 100 tokens per call. Full CRUD on collections, modes, values. Works on any Figma plan — no Enterprise required.</div>
           </div>
           <div class="card">
             <span class="card-emoji">🔍</span>
             <div class="card-title">Design–Code Parity</div>
-            <div class="card-desc">Compare a Figma component spec against your actual code implementation. Returns a scored diff with actionable fix items. Pre sign-off gold.</div>
+            <div class="card-desc">8-dimension scored diff of your Figma spec vs actual code. Hardcoded value detection, token mapping, spacing drift. Pre sign-off gold.</div>
+          </div>
+          <div class="card">
+            <span class="card-emoji">📊</span>
+            <div class="card-title">Design System Health</div>
+            <div class="card-desc">Lighthouse-style scorecard — naming, tokens, components, a11y, consistency, coverage. 0–100. <span class="hl">"Audit my design system."</span></div>
+          </div>
+          <div class="card">
+            <span class="card-emoji">📝</span>
+            <div class="card-title">Design Annotations</div>
+            <div class="card-desc"><span class="badge-2026">v1.18</span> Read and write designer-authored specs — animation timings, interaction behaviors, accessibility requirements. Included in AI-generated component docs.</div>
+          </div>
+          <div class="card">
+            <span class="card-emoji">🟨</span>
+            <div class="card-title">FigJam Support</div>
+            <div class="card-desc">9 tools: stickies (9 colors), connectors, shapes, tables, board read. Build affinity maps, flowcharts, retro boards via natural language.</div>
+          </div>
+          <div class="card">
+            <span class="card-emoji">🖼️</span>
+            <div class="card-title">Figma Slides</div>
+            <div class="card-desc">15 tools: create, edit, reorder, 22 transition styles, 8 easing curves. Add text and shapes. Manage entire presentations programmatically.</div>
           </div>
         </div>
         <div class="divider"></div>
-        <p style="font-size:11px;font-family:'Fragment Mono',monospace;color:var(--fig-purple-light);margin-bottom:6px">✦ Quick Setup (Claude Code)</p>
-        <div style="background:#1a1a1a;border:1px solid var(--fig-border);border-radius:6px;padding:10px 14px;font-family:'Fragment Mono',monospace;font-size:11px;color:#cdd6f4;line-height:1.7">
-          <span style="color:var(--fig-muted)"># NPX install (recommended, 56+ tools)</span><br>
-          <span style="color:var(--fig-green)">claude mcp add figma-console -s user \<br>&nbsp;&nbsp;-e FIGMA_ACCESS_TOKEN=figd_YOUR_TOKEN \<br>&nbsp;&nbsp;-e ENABLE_MCP_APPS=true \<br>&nbsp;&nbsp;-- npx -y figma-console-mcp@latest</span><br><br>
-          <span style="color:var(--fig-muted)"># Read-only explore (2 min, no token needed)</span><br>
+        <p style="font-size:11px;font-family:'Fragment Mono',monospace;color:var(--fig-purple-light);margin-bottom:6px">✦ Three ways to connect</p>
+        <div style="background:#1a1a1a;border:1px solid var(--fig-border);border-radius:6px;padding:10px 14px;font-family:'Fragment Mono',monospace;font-size:11px;color:#cdd6f4;line-height:1.8">
+          <span style="color:var(--fig-muted)"># NPX — full 87+ tools (recommended)</span><br>
+          <span style="color:var(--fig-green)">claude mcp add figma-console -s user \<br>&nbsp;&nbsp;-e FIGMA_ACCESS_TOKEN=figd_YOUR_TOKEN \<br>&nbsp;&nbsp;-- npx -y figma-console-mcp@latest</span><br><br>
+          <span style="color:var(--fig-muted)"># Cloud Mode — 76 tools, works from Claude.ai + v0 + Lovable</span><br>
+          <span style="color:var(--fig-muted)"># Open Desktop Bridge plugin → tell AI "Connect to my Figma plugin"</span><br><br>
+          <span style="color:var(--fig-muted)"># Remote read-only — no token, no install needed</span><br>
           <span style="color:var(--fig-blue)">claude mcp add figma-console -s user \<br>&nbsp;&nbsp;-- npx -y mcp-remote@latest \<br>&nbsp;&nbsp;https://figma-console-mcp.southleft.com/sse</span>
         </div>
         <div class="callout" style="margin-top:8px">
-          <span class="icon">⚠️</span>
-          <span>Full write capabilities (design creation, variable management) need the <strong style="color:var(--fig-text)">Desktop Bridge plugin</strong> installed in Figma Desktop. Remote SSE = read-only, 21 tools. NPX = everything, 56+ tools.</span>
+          <span class="icon">💡</span>
+          <span><strong style="color:var(--fig-text)">Use both MCPs together.</strong> Figma MCP = code-to-canvas + Code Connect. Console MCP = design system management + parity + FigJam + Slides. They're complementary — configure both in the same client.</span>
         </div>
       </div>
     </div>
-
-    <!-- SLIDE 13: CLOSE -->
-
-    <!-- Can Do / Can't Do -->
-
     <div class="slide" data-frame="Frame D-Collab — Ways of Working" data-type="Advanced" data-section="Close">
       <div class="slide-tag">Ways of Working</div>
       <h2 class="slide-title">Who Does What<br><span style="color:var(--fig-purple)">Now That Claude Exists?</span></h2>
@@ -1578,6 +1630,7 @@
     { label: '🎨 Design Tokens',   type: 'Tokens',       section: 'Foundations' },
     { label: '📐 Figma Prep',      type: 'Setup',        section: 'Foundations' },
     { label: '🔗 Code Connect',    type: 'Setup',        section: 'Foundations' },
+    { label: '📄 CLAUDE.md',       type: 'Setup',        section: 'Foundations' },
     { label: '🔄 The Loop',        type: 'Workflow',     section: 'Workflow'    },
     { label: '🖼️ Visual Thinking', type: 'Advanced',     section: 'Workflow'    },
     { label: '🔁 Code → Canvas',   type: 'Advanced',     section: 'Workflow'    },

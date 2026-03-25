@@ -148,6 +148,59 @@
 
   <div class="rule"></div>
 
+  <!-- CLAUDE.md -->
+  <div>
+    <div class="section-label">CLAUDE.md — do this first</div>
+    <div class="rows">
+      <div class="row">
+        <div class="row-key">What it is</div>
+        <div class="row-val">A file in your project root Claude reads automatically every session. Persistent memory — no re-prompting your stack or conventions.</div>
+        <a class="row-link deep" href="./designer.html" onclick="openSlide('designer.html',6);return false;">designer slide 7</a>
+      </div>
+      <div class="row">
+        <div class="row-key">Stack + tokens</div>
+        <div class="row-val">Framework, CSS approach, token file path, Figma source URL, component pattern to follow.</div>
+        <a class="row-link deep" href="./developer.html" onclick="openSlide('developer.html',4);return false;">dev slide 5</a>
+      </div>
+      <div class="row">
+        <div class="row-key">Conventions</div>
+        <div class="row-val">Naming, ARIA requirements, Storybook expectations, no hardcoded values.</div>
+        <a class="row-link deep" href="./developer.html" onclick="openSlide('developer.html',4);return false;">dev slide 5</a>
+      </div>
+      <div class="row">
+        <div class="row-key">Do Not Touch</div>
+        <div class="row-val">Legacy folders, deprecated files, vendor code. Prevents Claude from modifying things it shouldn't.</div>
+        <a class="row-link deep" href="./developer.html" onclick="openSlide('developer.html',4);return false;">dev slide 5</a>
+      </div>
+      <div class="row">
+        <div class="row-key">Team benefit</div>
+        <div class="row-val">Commit it. Every designer and dev on the team gets the same Claude behaviour with zero per-person setup.</div>
+        <a class="row-link deep" href="./designer.html" onclick="openSlide('designer.html',6);return false;">designer slide 7</a>
+      </div>
+    </div>
+    <div class="cmd" onclick="copyCmd(this, '# CLAUDE.md\n\n## Stack\nNext.js 15 · Tailwind CSS · TypeScript strict\n\n## Design System\n- Tokens: /tokens/index.ts — always reference, never hardcode\n- Figma: figma.com/design/[FILE_KEY]\n- Pattern: /components/Button.tsx\n\n## Conventions\n- No inline styles. No hardcoded colours.\n- ARIA labels on every interactive element\n- Storybook story for every new component\n\n## Do Not Touch\n- /legacy — deprecated\n- /tokens/legacy.css — do not import')" style="white-space:pre;line-height:1.8">
+# CLAUDE.md
+
+## Stack
+Next.js 15 · Tailwind CSS · TypeScript strict
+
+## Design System
+- Tokens: /tokens/index.ts — always reference, never hardcode
+- Figma: figma.com/design/[FILE_KEY]
+- Pattern: /components/Button.tsx
+
+## Conventions
+- No inline styles. No hardcoded colours.
+- ARIA labels on every interactive element
+- Storybook story for every new component
+
+## Do Not Touch
+- /legacy — deprecated
+- /tokens/legacy.css — do not import</div>
+  </div>
+
+  <div class="rule"></div>
+
   <!-- THE LOOP -->
   <div>
     <div class="section-label">The workflow loop</div>
@@ -165,7 +218,7 @@
       <div class="row">
         <div class="row-key">03 · Prompt Claude</div>
         <div class="row-val">Link + stack + token path + pattern reference + intent. All five. Every time.</div>
-        <a class="row-link deep" href="./designer.html" onclick="openSlide('designer.html',10);return false;">designer slide 11</a>
+        <a class="row-link deep" href="./designer.html" onclick="openSlide('designer.html',11);return false;">designer slide 12</a>
       </div>
       <div class="row">
         <div class="row-key">04 · Review output</div>
@@ -194,22 +247,22 @@
       <div class="row">
         <div class="row-key">① Figma node URL</div>
         <div class="row-val">Points Claude to the exact component. <code>?node-id=X-Y</code></div>
-        <a class="row-link deep" href="./designer.html" onclick="openSlide('designer.html',10);return false;">designer slide 11</a>
+        <a class="row-link deep" href="./designer.html" onclick="openSlide('designer.html',11);return false;">designer slide 12</a>
       </div>
       <div class="row">
         <div class="row-key">② Stack</div>
         <div class="row-val">Framework + CSS approach. Without this Claude guesses.</div>
-        <a class="row-link deep" href="./developer.html" onclick="openSlide('developer.html',8);return false;">dev slide 9</a>
+        <a class="row-link deep" href="./developer.html" onclick="openSlide('developer.html',9);return false;">dev slide 10</a>
       </div>
       <div class="row">
         <div class="row-key">③ Token file path</div>
         <div class="row-val">Biggest quality multiplier. <code>/tokens/index.ts</code></div>
-        <a class="row-link deep" href="./developer.html" onclick="openSlide('developer.html',8);return false;">dev slide 9</a>
+        <a class="row-link deep" href="./developer.html" onclick="openSlide('developer.html',9);return false;">dev slide 10</a>
       </div>
       <div class="row">
         <div class="row-key">④ Pattern reference</div>
         <div class="row-val">An existing component to follow. <code>/components/Card.tsx</code></div>
-        <a class="row-link deep" href="./developer.html" onclick="openSlide('developer.html',8);return false;">dev slide 9</a>
+        <a class="row-link deep" href="./developer.html" onclick="openSlide('developer.html',9);return false;">dev slide 10</a>
       </div>
       <div class="row">
         <div class="row-key">⑤ Intent</div>
@@ -225,9 +278,9 @@
       <span class="dim">All variants · ARIA · Storybook story</span>
     </div>
     <div style="margin-top:10px;font-size:11px;color:#666">
-      <a class="deep" href="./developer.html" onclick="openSlide('developer.html',9);return false;">Weak vs strong examples</a>
+      <a class="deep" href="./developer.html" onclick="openSlide('developer.html',10);return false;">Weak vs strong examples</a>
       &nbsp;·&nbsp;
-      <a class="deep" href="./developer.html" onclick="openSlide('developer.html',10);return false;">4 copy-paste templates</a>
+      <a class="deep" href="./developer.html" onclick="openSlide('developer.html',11);return false;">4 copy-paste templates</a>
     </div>
   </div>
 
@@ -251,9 +304,9 @@
       </tbody>
     </table>
     <div style="margin-top:10px;font-size:11px;color:#666">
-      <a class="deep" href="./designer.html" onclick="openSlide('designer.html',15);return false;">Designer deck</a>
+      <a class="deep" href="./designer.html" onclick="openSlide('designer.html',16);return false;">Designer deck</a>
       &nbsp;·&nbsp;
-      <a class="deep" href="./developer.html" onclick="openSlide('developer.html',5);return false;">Developer deck</a>
+      <a class="deep" href="./developer.html" onclick="openSlide('developer.html',6);return false;">Developer deck</a>
     </div>
   </div>
 
@@ -271,17 +324,17 @@
       <div class="row">
         <div class="row-key">Business logic</div>
         <div class="row-val">Claude sees your UI, not your data model or API contracts.</div>
-        <a class="row-link deep" href="./developer.html" onclick="openSlide('developer.html',6);return false;">dev slide 7</a>
+        <a class="row-link deep" href="./developer.html" onclick="openSlide('developer.html',7);return false;">dev slide 8</a>
       </div>
       <div class="row">
         <div class="row-key">Multi-screen in one shot</div>
         <div class="row-val">One component or one screen per conversation.</div>
-        <a class="row-link deep" href="./developer.html" onclick="openSlide('developer.html',6);return false;">dev slide 7</a>
+        <a class="row-link deep" href="./developer.html" onclick="openSlide('developer.html',7);return false;">dev slide 8</a>
       </div>
       <div class="row">
         <div class="row-key">First pass = final</div>
         <div class="row-val">Treat output as a strong first draft. Always review before merging.</div>
-        <a class="row-link deep" href="./designer.html" onclick="openSlide('designer.html',13);return false;">designer slide 14</a>
+        <a class="row-link deep" href="./designer.html" onclick="openSlide('designer.html',14);return false;">designer slide 15</a>
       </div>
       <div class="row">
         <div class="row-key">Free Figma plan</div>
@@ -329,11 +382,11 @@
       </div>
     </div>
     <div style="margin-top:10px;font-size:11px;color:#666">
-      <a class="deep" href="./designer.html" onclick="openSlide('designer.html',17);return false;">What &amp; why</a>
+      <a class="deep" href="./designer.html" onclick="openSlide('designer.html',18);return false;">What &amp; why</a>
       &nbsp;·&nbsp;
-      <a class="deep" href="./designer.html" onclick="openSlide('designer.html',18);return false;">Build your own</a>
+      <a class="deep" href="./designer.html" onclick="openSlide('designer.html',19);return false;">Build your own</a>
       &nbsp;·&nbsp;
-      <a class="deep" href="./designer.html" onclick="openSlide('designer.html',19);return false;">Full library</a>
+      <a class="deep" href="./designer.html" onclick="openSlide('designer.html',20);return false;">Full library</a>
     </div>
   </div>
 
@@ -360,9 +413,9 @@
       The failure mode all three share: no one owns the design-code parity check. Build that ritual first.
     </div>
     <div style="margin-top:8px;font-size:11px;color:#666">
-      <a class="deep" href="./designer.html" onclick="openSlide('designer.html',21);return false;">Designer deck</a>
+      <a class="deep" href="./designer.html" onclick="openSlide('designer.html',22);return false;">Designer deck</a>
       &nbsp;·&nbsp;
-      <a class="deep" href="./developer.html" onclick="openSlide('developer.html',15);return false;">Developer deck</a>
+      <a class="deep" href="./developer.html" onclick="openSlide('developer.html',16);return false;">Developer deck</a>
     </div>
   </div>
 
@@ -378,11 +431,11 @@
       </div>
       <div class="row" style="grid-template-columns:1fr auto">
         <div class="row-val" style="color:#e0e0e0">🎨 Designer — Visual Thinking</div>
-        <a class="row-link deep" href="./designer.html" onclick="openSlide('designer.html',7);return false;">slide 8</a>
+        <a class="row-link deep" href="./designer.html" onclick="openSlide('designer.html',9);return false;">slide 10</a>
       </div>
       <div class="row" style="grid-template-columns:1fr auto">
         <div class="row-val" style="color:#e0e0e0">🎨 Designer — Code → Canvas</div>
-        <a class="row-link deep" href="./designer.html" onclick="openSlide('designer.html',8);return false;">slide 9</a>
+        <a class="row-link deep" href="./designer.html" onclick="openSlide('designer.html',9);return false;">slide 10</a>
       </div>
       <div class="row" style="grid-template-columns:1fr auto">
         <div class="row-val" style="color:#e0e0e0">🎨 Designer — Component Systems</div>
@@ -390,11 +443,11 @@
       </div>
       <div class="row" style="grid-template-columns:1fr auto">
         <div class="row-val" style="color:#e0e0e0">🎨 Designer — Pro Tips</div>
-        <a class="row-link deep" href="./designer.html" onclick="openSlide('designer.html',16);return false;">slide 17</a>
+        <a class="row-link deep" href="./designer.html" onclick="openSlide('designer.html',17);return false;">slide 18</a>
       </div>
       <div class="row" style="grid-template-columns:1fr auto">
         <div class="row-val" style="color:#e0e0e0">🎨 Designer — figma-console-mcp</div>
-        <a class="row-link deep" href="./designer.html" onclick="openSlide('designer.html',20);return false;">slide 21</a>
+        <a class="row-link deep" href="./designer.html" onclick="openSlide('designer.html',21);return false;">slide 22</a>
       </div>
       <div class="row" style="grid-template-columns:1fr auto">
         <div class="row-val" style="color:#e0e0e0">⌨️ Developer — MCP config options</div>
@@ -402,11 +455,11 @@
       </div>
       <div class="row" style="grid-template-columns:1fr auto">
         <div class="row-val" style="color:#e0e0e0">⌨️ Developer — Code → Figma</div>
-        <a class="row-link deep" href="./developer.html" onclick="openSlide('developer.html',7);return false;">slide 8</a>
+        <a class="row-link deep" href="./developer.html" onclick="openSlide('developer.html',8);return false;">slide 9</a>
       </div>
       <div class="row" style="grid-template-columns:1fr auto">
-        <div class="row-val" style="color:#e0e0e0">⌨️ Developer — figma-console-mcp</div>
-        <a class="row-link deep" href="./developer.html" onclick="openSlide('developer.html',14);return false;">slide 15</a>
+        <div class="row-val" style="color:#e0e0e0">⌨️ Developer — figma-console-mcp (87+ tools)</div>
+        <a class="row-link deep" href="./developer.html" onclick="openSlide('developer.html',15);return false;">slide 16</a>
       </div>
     </div>
   </div>
@@ -418,7 +471,7 @@
     <a href="https://code.claude.com/docs/en/setup" target="_blank">Claude Code</a> ·
     <a href="https://help.figma.com/hc/en-us/articles/32132100833559" target="_blank">Figma MCP</a> ·
     <a href="https://skills.sh" target="_blank">skills.sh</a> ·
-    <a href="https://github.com/southleft/figma-console-mcp" target="_blank">figma-console-mcp</a> ·
+    <a href="https://figma-console-mcp.southleft.com" target="_blank">figma-console-mcp</a> ·
     <a href="https://github.com/anthropics/skills" target="_blank">anthropics/skills</a>
     <br><br>
     <span class="sig">Taroon Tyagi</span> · Principal Designer · March 2026
